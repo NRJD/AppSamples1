@@ -5,13 +5,14 @@
  */
 package org.nrjd.bv.app.samples.test;
 
+import java.nio.charset.Charset;
+
+import java.nio.charset.StandardCharsets;
+
 import org.nrjd.bv.app.samples.reg.BookEntry;
 import org.nrjd.bv.app.samples.reg.RegistryData;
 import org.nrjd.bv.app.samples.reg.RegistryDataUtils;
 import org.nrjd.bv.app.samples.util.DateUtils;
-
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 
 import java.util.Arrays;
 import java.util.List;
@@ -25,8 +26,6 @@ import org.junit.Test;
  * Registy Data utilities.
  */
 public class RegistryDataUtilsTest {
-    // Encoding used.
-    private static final Charset UTF8 = StandardCharsets.UTF_8;
     // Registry test data.
     private static final RegistryData REGISTRY_DATA = createReistryData();
     private static final String XML_HEADER = "<?xml version = '1.0' encoding = 'UTF-8'?>\r\n";

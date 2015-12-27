@@ -20,23 +20,26 @@ public class BookZipTester {
     }
 
     private static void testEpubZip(String token) {
-       testZip(token + ".epub", token + ".sepub", "uz_temp_" + token, "uz_enc_" + token, "uz_" + token);
+       testZip(token + ".epub", token + ".sepub", "uz_temp_" + token, "uz_enc_" + token, "uz_dec_" + token);
     }
     
-    private static void testZip(String zipFileName, String secZipFileName, String tempUnzipFolderName, String unzipFolderName, String secUnzipFolderName) {
+    private static void testZip(String zipFileName, String secZipFileName, String tempUnzipFolderName, String encryptedUnzipFolderName, String decryptedUnzipFolderName) {
+        // Create zip handlers.
         ZipHandler zip = new ZipHandler(false);
-        String zipFile = PATH + "\\" + zipFileName;
-        String unzipLocation = PATH + "\\" + tempUnzipFolderName;
-        zip.unzip(zipFile, unzipLocation);
-        // Secure zip
         ZipHandler secZip = new ZipHandler(true);
+        // Construct zip file names
+        String zipFile = PATH + "\\" + zipFileName;
         String secZipFile = PATH + "\\" + secZipFileName;
-        secZip.zip(secZipFile, unzipLocation);
-        // unzip
-        unzipLocation = PATH + "\\" + unzipFolderName;
-        zip.unzip(secZipFile, unzipLocation);
-        // Secure unzip
-        unzipLocation = PATH + "\\" + secUnzipFolderName;
-        secZip.unzip(secZipFile, unzipLocation);
+        // Unzip zip file into temp location.
+        String tempUnzipLocation = PATH + "\\" + tempUnzipFolderName;
+        zip.unzip(zipFile, tempUnzipLocation);
+        // Secure zip
+        secZip.zip(secZipFile, tempUnzipLocation);
+        // Unzip encrypted data.
+        String encryptedUnzipLocation = PATH + "\\" + encryptedUnzipFolderName;
+        zip.unzip(secZipFile, encryptedUnzipLocation);
+        // Unzip decrypted data.
+        String decryptedUnzipLocation = PATH + "\\" + decryptedUnzipFolderName;
+        secZip.unzip(secZipFile, decryptedUnzipLocation);
     }
 }

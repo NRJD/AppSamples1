@@ -5,7 +5,6 @@
  */
 package org.nrjd.bv.app.samples.sec;
 
-
 import org.nrjd.bv.app.samples.AppConstants;
 
 import java.security.Key;
@@ -18,19 +17,21 @@ import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 
-public class EncryptionHandler {
+/**
+ * Internal implementation for CryptoHandler.
+ */
+class BasicCryptoHandler implements CryptoHandler {
     private static final String ALGORITHM = "AES";
     private static final String PSWD_HASH_ALGORITHM = "SHA-256";
     // Don't store key in String.
     private static final byte[] DEFAULT_KEY = new byte[] { 'e', 'n', 'c', 'r', 'y', 'p', 't', 'i', 'n', 'g', 't', 'h', 'e', 'b', 'v', 'd', 'a', 't', 'a' };
-    private static final String CHARSET = AppConstants.UTF8;
     private byte[] keyData = null;
 
-    public EncryptionHandler() {
+    public BasicCryptoHandler() {
         this(null);
     }
 
-    public EncryptionHandler(byte[] key) {
+    public BasicCryptoHandler(byte[] key) {
         this.keyData = key;
     }
 
@@ -40,7 +41,7 @@ public class EncryptionHandler {
         cipher.init(Cipher.ENCRYPT_MODE, key);
         byte[] encryptedBytes = cipher.doFinal(data);
         String encodedData = new BASE64Encoder().encode(encryptedBytes);
-        byte[] encodedBytes = encodedData.getBytes(CHARSET);
+        byte[] encodedBytes = encodedData.getBytes(KeyGenUtils.getCharSet());
         return encodedBytes;
     }
 
@@ -48,7 +49,7 @@ public class EncryptionHandler {
         Key key = generateKey();
         Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
         cipher.init(Cipher.DECRYPT_MODE, key);
-        String encryptedData = new String(data, CHARSET);
+        String encryptedData = new String(data, KeyGenUtils.getCharSet());
         byte[] decodedBytes = new BASE64Decoder().decodeBuffer(encryptedData);
         byte[] decryptedBytes = cipher.doFinal(decodedBytes);
         return decryptedBytes;

@@ -5,7 +5,6 @@
  */
 package org.nrjd.bv.app.samples.sec;
 
-
 import java.security.Key;
 
 import javax.crypto.Cipher;
@@ -15,7 +14,10 @@ import sun.misc.BASE64Decoder;
 import sun.misc.BASE64Encoder;
 
 
-public class CryptoHandlerImpl implements CryptoHandler {
+/**
+ * Internal implementation for CryptoHandler.
+ */
+class CryptoHandlerImpl implements CryptoHandler {
     private static final String ALGORITHM = "AES";
     private static final int INITIAL_PADDING_SIZE = 100;
     private static final int ALGO_SCHEMA_DATA_SIZE = 100;

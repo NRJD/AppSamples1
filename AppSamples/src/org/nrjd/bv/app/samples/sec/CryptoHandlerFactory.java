@@ -12,6 +12,7 @@ public class CryptoHandlerFactory {
     }
 
     public static CryptoHandler getInstance() {
-        return new BasicCryptoHandler();
+        // return new BasicCryptoHandler();
+        return new CryptoHandlerImpl();
     }
 }

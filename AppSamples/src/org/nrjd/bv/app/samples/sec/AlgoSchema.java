@@ -9,7 +9,7 @@ import org.nrjd.bv.app.samples.util.StringUtils;
 
 
 /**
- * Internal utility to generate random key.
+ * Internal class to hold algo schema.
  */
 class AlgoSchema {
     private static byte ALGO_SCHEMA_MASK_BYTE_1 = 1;

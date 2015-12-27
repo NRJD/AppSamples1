@@ -5,20 +5,16 @@
  */
 package org.nrjd.bv.app.samples.zip;
 
-import org.nrjd.bv.app.samples.AppConstants;
-import org.nrjd.bv.app.samples.sec.EncryptionHandler;
-import org.nrjd.bv.app.samples.util.CommonUtils;
-
-import org.nrjd.bv.app.samples.util.StringUtils;
-
-import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.InputStream;
 
-import java.util.Arrays;
 import java.util.zip.ZipInputStream;
+
+import org.nrjd.bv.app.samples.sec.CryptoHandler;
+import org.nrjd.bv.app.samples.sec.CryptoHandlerFactory;
+import org.nrjd.bv.app.samples.util.CommonUtils;
 
 
 public class ZipSecurityUtils {
@@ -27,26 +23,39 @@ public class ZipSecurityUtils {
     public static byte[] getEncryptedZipEntryData(String zipEntryName, File zipEntryFile) {
         // TODO: Validate inputs
         byte[] encryptedData = null;
-        ByteArrayOutputStream baos = null;
         FileInputStream fis = null;
         try {
-            baos = new ByteArrayOutputStream((int)zipEntryFile.length() + 50);
             fis = new FileInputStream(zipEntryFile);
+            int initialBufferSize = ((int)zipEntryFile.length() + 50);
+            encryptedData = getEncryptedZipEntryData(zipEntryName, fis, initialBufferSize);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to encrypt zip entry data: " + zipEntryName, e);
+        } finally {
+            CommonUtils.closeQuietly(fis);
+        }
+        return encryptedData;
+    }
+
+    public static byte[] getEncryptedZipEntryData(String zipEntryName, InputStream is, int initialBufferSize) {
+        // TODO: Validate inputs
+        byte[] encryptedData = null;
+        ByteArrayOutputStream baos = null;
+        try {
+            baos = ((initialBufferSize > 0) ? new ByteArrayOutputStream(initialBufferSize) : new ByteArrayOutputStream());
             byte[] data = new byte[BUFFER_SIZE];
-            int readSize = fis.read(data);
+            int readSize = is.read(data);
             while (readSize != -1) {
                 baos.write(data, 0, readSize);
-                readSize = fis.read(data);
+                readSize = is.read(data);
             }
             baos.flush();
             byte[] dataBytes = baos.toByteArray();
-            EncryptionHandler encryptionHandler = new EncryptionHandler();
-            encryptedData = encryptionHandler.encrypt(dataBytes);
+            CryptoHandler cryptoHandler = getCryptoHandler();
+            encryptedData = cryptoHandler.encrypt(dataBytes);
         } catch (Exception e) {
             throw new RuntimeException("Failed to encrypt zip entry data: " + zipEntryName, e);
         } finally {
             CommonUtils.closeQuietly(baos);
-            CommonUtils.closeQuietly(fis);
         }
         return encryptedData;
     }
@@ -65,13 +74,17 @@ public class ZipSecurityUtils {
             }
             baos.flush();
             byte[] encryptedData = baos.toByteArray();
-            EncryptionHandler encryptionHandler = new EncryptionHandler();
-            decryptedData = encryptionHandler.decrypt(encryptedData);
+            CryptoHandler cryptoHandler = getCryptoHandler();
+            decryptedData = cryptoHandler.decrypt(encryptedData);
         } catch (Exception e) {
             throw new RuntimeException("Failed to decrypt zip entry data: " + zipEntryName, e);
         } finally {
             CommonUtils.closeQuietly(baos);
         }
         return decryptedData;
+    }
+
+    private static CryptoHandler getCryptoHandler() {
+        return CryptoHandlerFactory.getInstance();
     }
 }

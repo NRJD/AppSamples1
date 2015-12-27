@@ -102,6 +102,7 @@ public class ZipHandler {
             ZipEntry zipEntry = new ZipEntry(zipEntryName);
             zos.putNextEntry(zipEntry);
             zos.write(encryptedData);
+            zos.closeEntry();
             zos.flush();
         } catch (Exception e) {
             throw new RuntimeException("Failed to zip secure entry: " + zipEntryName, e);
