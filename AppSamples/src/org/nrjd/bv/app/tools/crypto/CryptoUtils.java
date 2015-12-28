@@ -41,6 +41,13 @@ public class CryptoUtils {
     //// File extensions set for excluding encryption.
     private static final Set<String> EXCLUDE_EXTENSIONS =
         concat(CONTROL_FILE_EXTENSIONS, FONT_FILE_EXTENSIONS, IMAGE_FILE_EXTENSIONS, AUDIO_VIDEO_FILE_EXTENSIONS, SCRIPT_FILE_EXTENSIONS);
+    
+    // Include set for encryption.
+    // Baring about exclusions, we exclude any other file which doesn't cover this include list.
+    // In this way, if any xml files exists in the epub archive, they will not be encrypted.
+    // If any files without extension exists in the epub archive, they will not be encrypted in this way.
+    private static final Set<String> HTML_FILE_EXTENSIONS = constructCaseInsensitiveSet(".htm", ".html", ".xhtml", ".epub", ".bk");
+    private static final Set<String> INCLUDE_EXTENSIONS = concat(HTML_FILE_EXTENSIONS);
 
     private CryptoUtils() {
     }
@@ -48,24 +55,34 @@ public class CryptoUtils {
     public static boolean isExcludeFromEncryption(String resourcePath) {
         if (StringUtils.isNotNullOrEmpty(resourcePath)) {
             String resourcePathLower = resourcePath.trim().toLowerCase();
-            // Check if META-INF resource.
+            // Check if META-INF resource, then exclude from encryption.
             if (resourcePathLower.indexOf(META_INF_RESOURCE_URI) >= 0) {
-                return true;
+                return true; // Exclude from encryption.
             }
-            // Check exclude file name.
+            // Exclude the specified exclude file names from encryption.
             for (String excludeFileName : EXCLUDE_FILE_NAMES) {
                 if (resourcePathLower.endsWith(excludeFileName)) {
-                    return true;
+                    return true; // Exclude from encryption.
                 }
             }
-            // Check exclude extension.
+            // Exclude the specified exclude file extensions from encryption.
             for (String excludeExtension : EXCLUDE_EXTENSIONS) {
                 if (resourcePathLower.endsWith(excludeExtension)) {
-                    return true;
+                    return true; // Exclude from encryption.
                 }
             }
+            // Include the specified include file extensions into encryption.
+            for (String includeExtension : INCLUDE_EXTENSIONS) {
+                if (resourcePathLower.endsWith(includeExtension)) {
+                    return false; // Include into encryption.
+                }
+            }
+            // Control comes here for those files which do not corresponds to html files or main webview files.
+            // For example, for any .xml files, or files with any other extensions or files without any extension.
+            // These files should be excluded from the encryption.
+            return true; // Exclude from encryption.
         }
-        return false;
+        return false; // Exclude from encryption if the file is null or blank.
     }
 
     private static Set<String> constructCaseInsensitiveSet(String... values) {
