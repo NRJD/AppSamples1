@@ -12,8 +12,8 @@ import java.io.InputStream;
 
 import java.util.zip.ZipInputStream;
 
-import org.nrjd.bv.app.samples.crypto.sec.CryptoHandler;
-import org.nrjd.bv.app.samples.crypto.sec.CryptoHandlerFactory;
+import org.nrjd.bv.app.samples.crypto.CryptoHandler;
+import org.nrjd.bv.app.samples.crypto.CryptoHandlerFactory;
 import org.nrjd.bv.app.samples.util.CommonUtils;
 
 

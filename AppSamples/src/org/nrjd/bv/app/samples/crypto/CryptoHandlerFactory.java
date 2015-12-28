@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.crypto.sec;
+package org.nrjd.bv.app.samples.crypto;
 
 
 public class CryptoHandlerFactory {
