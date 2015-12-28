@@ -29,7 +29,7 @@ class Base64Utils {
         return encodedBytes;
     }
 
-    public static byte[] decode(byte[] data) throws Exception {
+    public static byte[] decode(byte[] data) {
         byte[] decodedBytes = null;
         try {
             String encodedData = new String(data, KeyGenUtils.getCharSet());
