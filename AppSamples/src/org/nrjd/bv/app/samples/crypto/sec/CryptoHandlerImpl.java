@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.sec;
+package org.nrjd.bv.app.samples.crypto.sec;
 
 import java.security.Key;
 
@@ -22,8 +22,8 @@ class CryptoHandlerImpl implements CryptoHandler {
     private static final int INITIAL_PADDING_SIZE = 100;
     private static final int ALGO_SCHEMA_DATA_SIZE = 100;
     // Aglo schema constants.
-    static final int CURRENT_CRYPTO_ALGO_SCHEMA_ID = 1;
-    static final int CURRENT_CRYPTO_RELEASE_VER = 1;
+    private static final int CURRENT_CRYPTO_ALGO_SCHEMA_ID = 1;
+    private static final int CURRENT_CRYPTO_RELEASE_VER = 1;
     private static final int KEY_SIZE_FOR_SCHEMA_1 = 16;
 
     public CryptoHandlerImpl() {

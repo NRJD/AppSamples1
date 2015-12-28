@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.sec;
+package org.nrjd.bv.app.samples.crypto.sec;
 
 import java.util.Random;
 import java.util.UUID;

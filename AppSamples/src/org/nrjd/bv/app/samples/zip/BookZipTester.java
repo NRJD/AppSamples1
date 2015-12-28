@@ -15,12 +15,13 @@ public class BookZipTester {
     }
 
     public static void main(String[] a) {
-        testEpubZip("S1");
+        testEpubZip("B21");
+        // testEpubZip("S1");
         System.out.println("============");
     }
 
     private static void testEpubZip(String token) {
-       testZip(token + ".epub", token + ".sepub", "uz_temp_" + token, "uz_enc_" + token, "uz_dec_" + token);
+       testZip(token + ".epub", token + ".bk", "uz_temp_" + token, "uz_enc_" + token, "uz_dec_" + token);
     }
     
     private static void testZip(String zipFileName, String secZipFileName, String tempUnzipFolderName, String encryptedUnzipFolderName, String decryptedUnzipFolderName) {
