@@ -5,7 +5,6 @@
  */
 package org.nrjd.bv.app.util;
 
-import org.nrjd.bv.app.samples.AppConstants;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

@@ -8,7 +8,7 @@ package org.nrjd.bv.app.tools.crypto;
 import java.util.Random;
 import java.util.UUID;
 
-import org.nrjd.bv.app.samples.AppConstants;
+import org.nrjd.bv.app.util.AppConstants;
 
 
 /**

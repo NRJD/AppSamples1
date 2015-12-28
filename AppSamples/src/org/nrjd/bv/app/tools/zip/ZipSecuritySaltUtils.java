@@ -5,7 +5,7 @@
  */
 package org.nrjd.bv.app.tools.zip;
 
-import org.nrjd.bv.app.samples.AppConstants;
+import org.nrjd.bv.app.util.AppConstants;
 import org.nrjd.bv.app.util.CommonUtils;
 
 import org.nrjd.bv.app.util.StringUtils;

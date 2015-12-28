@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples;
+package org.nrjd.bv.app.util;
 
 
 public class AppConstants {
