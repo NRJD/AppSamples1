@@ -16,13 +16,27 @@ class Base64Utils {
     private Base64Utils() {
     }
 
-    public static String encode(byte[] data) {
-        String encodedData = new BASE64Encoder().encode(data);
-        return encodedData;
+    public static byte[] encode(byte[] data) {
+        byte[] encodedBytes = null;
+        try {
+            String encodedData = new BASE64Encoder().encode(data);
+            if (encodedData != null) {
+                encodedBytes = encodedData.getBytes(KeyGenUtils.getCharSet());
+            }
+        } catch (Exception e) {
+            encodedBytes = null;
+        }
+        return encodedBytes;
     }
 
-    public static byte[] decode(java.lang.String data) throws Exception {
-        byte[] decodedBytes = new BASE64Decoder().decodeBuffer(data);
+    public static byte[] decode(byte[] data) throws Exception {
+        byte[] decodedBytes = null;
+        try {
+            String encodedData = new String(data, KeyGenUtils.getCharSet());
+            decodedBytes = new BASE64Decoder().decodeBuffer(encodedData);
+        } catch (Exception e) {
+            decodedBytes = null;
+        }
         return decodedBytes;
     }
 }

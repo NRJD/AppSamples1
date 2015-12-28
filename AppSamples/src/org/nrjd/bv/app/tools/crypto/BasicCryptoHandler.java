@@ -35,8 +35,7 @@ class BasicCryptoHandler implements CryptoHandler {
         Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
         cipher.init(Cipher.ENCRYPT_MODE, key);
         byte[] encryptedBytes = cipher.doFinal(data);
-        String encodedData = Base64Utils.encode(encryptedBytes);
-        byte[] encodedBytes = encodedData.getBytes(KeyGenUtils.getCharSet());
+        byte[] encodedBytes = Base64Utils.encode(encryptedBytes);
         return encodedBytes;
     }
 
@@ -44,8 +43,7 @@ class BasicCryptoHandler implements CryptoHandler {
         Key key = generateKey();
         Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
         cipher.init(Cipher.DECRYPT_MODE, key);
-        String encryptedData = new String(data, KeyGenUtils.getCharSet());
-        byte[] decodedBytes = Base64Utils.decode(encryptedData);
+        byte[] decodedBytes = Base64Utils.decode(data);
         byte[] decryptedBytes = cipher.doFinal(decodedBytes);
         return decryptedBytes;
     }

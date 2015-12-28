@@ -53,8 +53,7 @@ class CryptoHandlerImpl implements CryptoHandler {
         KeyGenUtils.copyBytes(encryptedBytes, encryptedBytesWithKeyInfo, keyInfoSize);
 
         //// Encode the data.
-        String encodedData = Base64Utils.encode(encryptedBytesWithKeyInfo);
-        byte[] encodedBytes = encodedData.getBytes(KeyGenUtils.getCharSet());
+        byte[] encodedBytes = Base64Utils.encode(encryptedBytesWithKeyInfo);
         return encodedBytes;
     }
 
@@ -62,8 +61,7 @@ class CryptoHandlerImpl implements CryptoHandler {
         byte[] decryptedBytes = data;
         try {
             //// Decode the data.
-            String encodedData = new String(data, KeyGenUtils.getCharSet());
-            byte[] decodedBytes = Base64Utils.decode(encodedData);
+            byte[] decodedBytes = Base64Utils.decode(data);
 
             //// Process key info.
             // Parse algo schema data from key info.
