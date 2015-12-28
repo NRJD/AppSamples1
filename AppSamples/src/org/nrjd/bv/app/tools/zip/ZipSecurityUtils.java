@@ -15,7 +15,7 @@ import java.util.zip.ZipInputStream;
 import org.nrjd.bv.app.tools.crypto.CryptoHandler;
 import org.nrjd.bv.app.tools.crypto.CryptoHandlerFactory;
 import org.nrjd.bv.app.tools.crypto.CryptoUtils;
-import org.nrjd.bv.app.tools.util.CommonUtils;
+import org.nrjd.bv.app.util.CommonUtils;
 
 
 public class ZipSecurityUtils {

@@ -6,9 +6,9 @@
 package org.nrjd.bv.app.tools.zip;
 
 import org.nrjd.bv.app.samples.AppConstants;
-import org.nrjd.bv.app.tools.util.CommonUtils;
+import org.nrjd.bv.app.util.CommonUtils;
 
-import org.nrjd.bv.app.tools.util.StringUtils;
+import org.nrjd.bv.app.util.StringUtils;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;

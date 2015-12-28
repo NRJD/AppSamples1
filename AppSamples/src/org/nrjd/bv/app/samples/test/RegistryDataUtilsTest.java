@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 import org.nrjd.bv.app.samples.reg.BookEntry;
 import org.nrjd.bv.app.samples.reg.RegistryData;
 import org.nrjd.bv.app.samples.reg.RegistryDataUtils;
-import org.nrjd.bv.app.tools.util.DateUtils;
+import org.nrjd.bv.app.util.DateUtils;
 
 import java.util.Arrays;
 import java.util.List;

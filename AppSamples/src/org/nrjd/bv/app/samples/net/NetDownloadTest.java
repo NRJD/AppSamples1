@@ -5,7 +5,7 @@
  */
 package org.nrjd.bv.app.samples.net;
 
-import org.nrjd.bv.app.tools.util.FileUtils;
+import org.nrjd.bv.app.util.FileUtils;
 
 import org.nrjd.bv.app.samples.reg.BookEntry;
 import org.nrjd.bv.app.samples.reg.RegistryData;

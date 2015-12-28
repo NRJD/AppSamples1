@@ -5,16 +5,11 @@
  */
 package org.nrjd.bv.app.tools.crypto;
 
-import org.nrjd.bv.app.samples.AppConstants;
-
 import java.security.Key;
 import java.security.MessageDigest;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
-
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
 
 
 /**
@@ -40,7 +35,7 @@ class BasicCryptoHandler implements CryptoHandler {
         Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
         cipher.init(Cipher.ENCRYPT_MODE, key);
         byte[] encryptedBytes = cipher.doFinal(data);
-        String encodedData = new BASE64Encoder().encode(encryptedBytes);
+        String encodedData = Base64Utils.encode(encryptedBytes);
         byte[] encodedBytes = encodedData.getBytes(KeyGenUtils.getCharSet());
         return encodedBytes;
     }
@@ -50,7 +45,7 @@ class BasicCryptoHandler implements CryptoHandler {
         Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
         cipher.init(Cipher.DECRYPT_MODE, key);
         String encryptedData = new String(data, KeyGenUtils.getCharSet());
-        byte[] decodedBytes = new BASE64Decoder().decodeBuffer(encryptedData);
+        byte[] decodedBytes = Base64Utils.decode(encryptedData);
         byte[] decryptedBytes = cipher.doFinal(decodedBytes);
         return decryptedBytes;
     }

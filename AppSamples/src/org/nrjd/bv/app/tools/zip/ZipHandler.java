@@ -5,9 +5,6 @@
  */
 package org.nrjd.bv.app.tools.zip;
 
-import org.nrjd.bv.app.tools.util.CommonUtils;
-import org.nrjd.bv.app.tools.util.StringUtils;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -19,6 +16,9 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
+
+import org.nrjd.bv.app.util.CommonUtils;
+import org.nrjd.bv.app.util.StringUtils;
 
 
 public class ZipHandler {

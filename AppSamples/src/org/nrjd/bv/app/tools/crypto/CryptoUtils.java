@@ -8,8 +8,8 @@ package org.nrjd.bv.app.tools.crypto;
 import java.util.HashSet;
 import java.util.Set;
 
-import org.nrjd.bv.app.tools.util.ArrayUtils;
-import org.nrjd.bv.app.tools.util.StringUtils;
+import org.nrjd.bv.app.util.ArrayUtils;
+import org.nrjd.bv.app.util.StringUtils;
 
 
 /**

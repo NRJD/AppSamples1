@@ -10,9 +10,6 @@ import java.security.Key;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-import sun.misc.BASE64Decoder;
-import sun.misc.BASE64Encoder;
-
 
 /**
  * Internal implementation for CryptoHandler.
@@ -56,7 +53,7 @@ class CryptoHandlerImpl implements CryptoHandler {
         KeyGenUtils.copyBytes(encryptedBytes, encryptedBytesWithKeyInfo, keyInfoSize);
 
         //// Encode the data.
-        String encodedData = new BASE64Encoder().encode(encryptedBytesWithKeyInfo);
+        String encodedData = Base64Utils.encode(encryptedBytesWithKeyInfo);
         byte[] encodedBytes = encodedData.getBytes(KeyGenUtils.getCharSet());
         return encodedBytes;
     }
@@ -66,7 +63,7 @@ class CryptoHandlerImpl implements CryptoHandler {
         try {
             //// Decode the data.
             String encodedData = new String(data, KeyGenUtils.getCharSet());
-            byte[] decodedBytes = new BASE64Decoder().decodeBuffer(encodedData);
+            byte[] decodedBytes = Base64Utils.decode(encodedData);
 
             //// Process key info.
             // Parse algo schema data from key info.

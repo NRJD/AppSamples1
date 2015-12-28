@@ -6,7 +6,7 @@
 package org.nrjd.bv.app.samples.test;
 
 import org.nrjd.bv.app.samples.reg.BookEntry;
-import org.nrjd.bv.app.tools.util.DateUtils;
+import org.nrjd.bv.app.util.DateUtils;
 import org.nrjd.bv.app.samples.reg.RegistryData;
 import org.nrjd.bv.app.samples.reg.RegistryDataJaxbUtils;
 

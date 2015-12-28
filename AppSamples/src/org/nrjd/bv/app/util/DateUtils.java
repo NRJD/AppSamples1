@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.tools.util;
+package org.nrjd.bv.app.util;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;

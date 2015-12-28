@@ -5,7 +5,7 @@
  */
 package org.nrjd.bv.app.tools.crypto;
 
-import org.nrjd.bv.app.tools.util.StringUtils;
+import org.nrjd.bv.app.util.StringUtils;
 
 
 /**
