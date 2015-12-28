@@ -30,21 +30,33 @@ class BasicCryptoHandler implements CryptoHandler {
         this.keyData = key;
     }
 
-    public byte[] encrypt(byte[] data) throws Exception {
-        Key key = generateKey();
-        Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
-        cipher.init(Cipher.ENCRYPT_MODE, key);
-        byte[] encryptedBytes = cipher.doFinal(data);
-        byte[] encodedBytes = Base64Utils.encode(encryptedBytes);
+    public byte[] encrypt(byte[] data) {
+        byte[] encodedBytes = null;
+        try {
+            Key key = generateKey();
+            Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
+            cipher.init(Cipher.ENCRYPT_MODE, key);
+            byte[] encryptedBytes = cipher.doFinal(data);
+            encodedBytes = Base64Utils.encode(encryptedBytes);
+        } catch (Exception e) {
+            // Return same data.
+            encodedBytes = data;
+        }
         return encodedBytes;
     }
 
-    public byte[] decrypt(byte[] data) throws Exception {
-        Key key = generateKey();
-        Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
-        cipher.init(Cipher.DECRYPT_MODE, key);
-        byte[] decodedBytes = Base64Utils.decode(data);
-        byte[] decryptedBytes = cipher.doFinal(decodedBytes);
+    public byte[] decrypt(byte[] data) {
+        byte[] decryptedBytes = null;
+        try {
+            Key key = generateKey();
+            Cipher cipher = Cipher.getInstance(getDefaultAlgorithm());
+            cipher.init(Cipher.DECRYPT_MODE, key);
+            byte[] decodedBytes = Base64Utils.decode(data);
+            decryptedBytes = cipher.doFinal(decodedBytes);
+        } catch (Exception e) {
+            // Return same data.
+            decryptedBytes = data;
+        }
         return decryptedBytes;
     }
 

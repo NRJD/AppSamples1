@@ -7,7 +7,7 @@ package org.nrjd.bv.app.tools.crypto;
 
 
 public interface CryptoHandler {
-    public byte[] encrypt(byte[] data) throws Exception;
+    public byte[] encrypt(byte[] data);
 
-    public byte[] decrypt(byte[] data) throws Exception;
+    public byte[] decrypt(byte[] data);
 }

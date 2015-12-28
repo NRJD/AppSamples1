@@ -13,7 +13,7 @@ import java.util.Set;
 public class ArrayUtils {
     private ArrayUtils() {
     }
-
+    
     public static Set<String> convertToSet(String... values) {
         Set<String> set = null;
         if (values != null) {
