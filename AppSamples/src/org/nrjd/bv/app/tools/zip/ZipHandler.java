@@ -3,10 +3,10 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.zip;
+package org.nrjd.bv.app.tools.zip;
 
-import org.nrjd.bv.app.samples.util.CommonUtils;
-import org.nrjd.bv.app.samples.util.StringUtils;
+import org.nrjd.bv.app.tools.util.CommonUtils;
+import org.nrjd.bv.app.tools.util.StringUtils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

@@ -5,7 +5,7 @@
  */
 package org.nrjd.bv.app.samples.reg;
 
-import org.nrjd.bv.app.samples.util.DateUtils;
+import org.nrjd.bv.app.tools.util.DateUtils;
 
 import java.util.Date;
 

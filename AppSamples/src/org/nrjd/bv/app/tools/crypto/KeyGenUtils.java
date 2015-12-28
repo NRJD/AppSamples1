@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.crypto;
+package org.nrjd.bv.app.tools.crypto;
 
 import java.util.Random;
 import java.util.UUID;
@@ -12,7 +12,7 @@ import org.nrjd.bv.app.samples.AppConstants;
 
 
 /**
- * Internal utility to generate random key.
+ * Internal random key generation utilities.
  */
 class KeyGenUtils {
     private static final int DEFAULT_KEY_LEN = 16;

@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.zip;
+package org.nrjd.bv.app.tools.zip;
 
 import java.util.Arrays;
 import java.util.List;

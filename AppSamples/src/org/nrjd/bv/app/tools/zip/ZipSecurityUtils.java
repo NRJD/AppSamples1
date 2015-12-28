@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.zip;
+package org.nrjd.bv.app.tools.zip;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -12,9 +12,10 @@ import java.io.InputStream;
 
 import java.util.zip.ZipInputStream;
 
-import org.nrjd.bv.app.samples.crypto.CryptoHandler;
-import org.nrjd.bv.app.samples.crypto.CryptoHandlerFactory;
-import org.nrjd.bv.app.samples.util.CommonUtils;
+import org.nrjd.bv.app.tools.crypto.CryptoHandler;
+import org.nrjd.bv.app.tools.crypto.CryptoHandlerFactory;
+import org.nrjd.bv.app.tools.crypto.CryptoUtils;
+import org.nrjd.bv.app.tools.util.CommonUtils;
 
 
 public class ZipSecurityUtils {
@@ -50,8 +51,12 @@ public class ZipSecurityUtils {
             }
             baos.flush();
             byte[] dataBytes = baos.toByteArray();
-            CryptoHandler cryptoHandler = getCryptoHandler();
-            encryptedData = cryptoHandler.encrypt(dataBytes);
+            if (CryptoUtils.isExcludeFromEncryption(zipEntryName)) {
+                encryptedData = dataBytes;
+            } else {
+                CryptoHandler cryptoHandler = getCryptoHandler();
+                encryptedData = cryptoHandler.encrypt(dataBytes);
+            }
         } catch (Exception e) {
             throw new RuntimeException("Failed to encrypt zip entry data: " + zipEntryName, e);
         } finally {

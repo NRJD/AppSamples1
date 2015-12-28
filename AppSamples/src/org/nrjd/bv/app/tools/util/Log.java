@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.util;
+package org.nrjd.bv.app.tools.util;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

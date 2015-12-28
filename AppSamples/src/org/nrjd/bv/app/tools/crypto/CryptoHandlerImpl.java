@@ -3,7 +3,7 @@
  *
  * This file is part of Bhakthi Vriksha application.
  */
-package org.nrjd.bv.app.samples.crypto;
+package org.nrjd.bv.app.tools.crypto;
 
 import java.security.Key;
 

@@ -5,8 +5,8 @@
  */
 package org.nrjd.bv.app.samples.reg;
 
-import org.nrjd.bv.app.samples.util.Log;
-import org.nrjd.bv.app.samples.util.XmlUtils;
+import org.nrjd.bv.app.tools.util.Log;
+import org.nrjd.bv.app.tools.util.XmlUtils;
 
 import java.util.List;
 
