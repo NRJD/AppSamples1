@@ -17,7 +17,7 @@ import javax.crypto.spec.SecretKeySpec;
 class CryptoHandlerImpl implements CryptoHandler {
     private static final String ALGORITHM = "AES";
     private static final int INITIAL_PADDING_SIZE = 100;
-    private static final int ALGO_SCHEMA_DATA_SIZE = 100;
+    private static final int ALGO_SCHEMA_DATA_SIZE = 200;
     // Aglo schema constants.
     private static final int CURRENT_CRYPTO_ALGO_SCHEMA_ID = 1;
     private static final int CURRENT_CRYPTO_RELEASE_VER = 1;

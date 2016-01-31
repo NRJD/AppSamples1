@@ -15,6 +15,10 @@ public class ZipTester {
     }
 
     public static void main(String[] a) {
+        testZipAndUnzip();
+    }
+    
+    private static void testZipAndUnzip() {
         testZip(false);
         testUnzip(false);
         System.out.println("=========");

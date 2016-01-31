@@ -45,18 +45,18 @@ class KeyGenUtils {
         return key;
     }
 
-    static int generateRandomMarkCharValue() {
-        int value = ((randomMaskChar.nextInt() % MASK_CHARS_UPPER_ASCII_LIMIT) + 1);
-        return Math.abs(value);
+    static int generateRandomMaskCharAbsoluteValue() {
+        // Return the absolute postive value.
+        return Math.abs(randomMaskChar.nextInt());
     }
 
     static int generateRandomMarkCharIndex(int paddingLength) {
-        int index = (generateRandomMarkCharValue() % paddingLength);
+        int index = (generateRandomMaskCharAbsoluteValue() % paddingLength);
         return index;
     }
 
     static byte generateRandomMarkCharByte() {
-        int ch = ((randomMaskChar.nextInt() % MASK_CHARS_UPPER_ASCII_LIMIT) + 1);
+        int ch = ((generateRandomMaskCharAbsoluteValue() % MASK_CHARS_UPPER_ASCII_LIMIT) + 1);
         return (byte)ch;
     }
 
